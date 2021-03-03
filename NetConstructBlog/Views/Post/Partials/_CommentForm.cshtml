@@ -1,0 +1,29 @@
+﻿@model NetConstructBlog.Models.View.CommentViewModel
+
+
+@using (@Html.BeginForm("Comment", "Post", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <fieldset class="form-group">
+        <div class="row mt-2 mb-2">
+            @Html.HiddenFor(c => c.ParentComment, new { @value = Model.ParentComment } )
+            <div class="col-6">
+                @Html.TextBoxFor(c => c.Comment.Name, new { @class = "form-control", @placeholder = "Name" })
+                @Html.ValidationMessageFor(c => c.Comment.Name, null, new { @class = "text-danger" })
+            </div>
+            <div class="col-6">
+                @Html.TextBoxFor(c => c.Comment.EmailAddress, new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(c => c.Comment.EmailAddress, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.TextAreaFor(c => c.Comment.Message, new { @class = "form-control", @placeholder = "Message" })
+        @Html.ValidationMessageFor(c => c.Comment.Message, null, new { @class = "text-danger" })
+        <button class="btn btn-dark d-block mt-2" type="submit">Submit</button>
+    </fieldset>
+    <div class="text-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+

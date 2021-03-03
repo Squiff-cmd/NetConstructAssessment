@@ -1,0 +1,16 @@
+﻿@model NetConstructBlog.Models.Data.Post
+
+@{
+    var postUrl = $"Post/{@Model.Id}";
+}
+
+<div class="card blog-card mb-3">
+    <div class="blog-card-image" style="background-image:url(@Model.Image)">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Html.Raw(@Model.Summary)</p>
+        <p class="card-text"><small class="text-muted">Posted: @Model.Date.ToShortDateString()</small></p>
+        <a href="@postUrl" class="stretched-link"></a>
+    </div>
+</div>

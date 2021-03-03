@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "@Model.Title";
+}
+
+@using NetConstructBlog.Models.Data
+@using NetConstructBlog.Models.View
+@model NetConstructBlog.Models.View.PostViewModel
+<div class="container blog-post">
+    <div class="post-hero-image mb-4" style="background-image: url(@Model.Post.Image)"></div>
+    <h1 class="text-center mb-4">@Model.Post.Title</h1>
+    <div class="mb-4">
+        @Html.Raw(Model.Post.HtmlContent)
+    </div>
+    <div class="comment-thread pb-4">
+        @foreach (var comment in Model.Post.Comments ?? Enumerable.Empty<Comment>())
+        {
+            await Html.RenderPartialAsync("Partials/_Comment", comment);
+        }
+        <h2>Add Comment</h2>
+        @{await Html.RenderPartialAsync("Partials/_CommentForm", new CommentViewModel { ParentComment = Model.Post.Id, Comment = new Comment() });}
+    </div>
+</div>
+
+
+

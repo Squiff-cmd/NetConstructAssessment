@@ -1,0 +1,39 @@
+﻿@using NetConstructBlog.Models.Data
+@using NetConstructBlog.Models.View
+@model NetConstructBlog.Models.Data.Comment
+
+<div class="comment" id="comment-@Model.Id">
+    <a class="comment-border-link" href="#comment-@Model.Id">
+        <span class="sr-only">Jump to comment</span>
+    </a>
+    <div class="comment-heading">
+        <div class="comment-info">
+            <h6>@Model.Name</h6>
+            <p>@Model.Date.ToShortDateString()</p>
+        </div>
+    </div>
+    <div class="comment-body">
+        <p>
+            @Model.Message
+        </p>
+        <button id="reply-button-@Model.Id" class="btn btn-dark">Reply</button>
+        <div id="comment-@Model.Id-reply-form" class="d-none">
+            @{await Html.RenderPartialAsync("Partials/_ReplyForm", new CommentViewModel { ParentComment = Model.Id,  Comment = new Comment()});}
+        </div>
+    </div>
+    <div class="replies">
+        @foreach (var reply in Model.Replies ?? Enumerable.Empty<Comment>())
+        {
+            <div class="comment-thread">
+                @{await Html.RenderPartialAsync("Partials/_Comment", reply);}
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $('#reply-button-@Model.Id').click(() => {
+        $('#comment-@Model.Id-reply-form').toggleClass("d-none");
+    })
+</script>
+

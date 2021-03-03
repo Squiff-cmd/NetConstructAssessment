@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model NetConstructBlog.Models.View.HomeViewModel
+
+<div class="container blog-list">
+    <div class="row">
+        @foreach (var blog in Model.Blogs)
+        {
+            <div class="col-12 col-md-6">
+                @{ await Html.RenderPartialAsync("Partials/_BlogItem", blog); }
+            </div>
+        }
+    </div>
+</div>
