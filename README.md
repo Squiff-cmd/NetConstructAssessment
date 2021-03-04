@@ -10,6 +10,7 @@ I would have created two separate projects:
 * Server - ASP .Net Core 5 Web API
 
 Demonstrated best by the diagram below.
+<br>
 <img src="https://www.dotnetcurry.com/images/aspnet-core/aspnet-core3-spa/aspnet-core-spa-project.png?w=980&h=556" alt="drawing" width="500"/>
 
 The client SPA would make requests to controllers in the .Net Core API returning JSON to populate the template views of the client.  
