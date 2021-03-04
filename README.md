@@ -13,8 +13,7 @@ Demonstrated best by the diagram below.
 <br>
 <img src="https://www.dotnetcurry.com/images/aspnet-core/aspnet-core3-spa/aspnet-core-spa-project.png?w=980&h=556" alt="drawing" width="500"/>
 
-The client SPA would make requests to controllers in the .Net Core API returning JSON to populate the template views of the client.  
-I understand that the assessment was a test of ability to create a .NET MVC application, but I have no prior expirience in returning JavaScript framework generated views from .NET MVC Controllers. 
+The client SPA would make requests to controllers in the .Net Core API returning JSON to populate the template views of the client. I understand that the assessment was a test of ability to create a .NET MVC application, but I have no prior expirience in returning JavaScript framework generated views from .NET MVC Controllers. 
 
 ## Tasks Completed
 
